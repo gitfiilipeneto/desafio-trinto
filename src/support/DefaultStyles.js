@@ -14,8 +14,8 @@ export const StyledContainer = styled.div`
     max-width:100%;
     height: 100vh;
     max-height:100%;
-    display: grid;  
-   grid-template-columns:(5, 1fr);
+    display: flex;  
+    flex-direction: column;
 
   @media(max-width: 800px) {
     height:auto;
@@ -35,6 +35,7 @@ export const StyledCard = styled.div`
     align-items:center;
     & div {
         margin:10px;
+        height: auto;
     }
     & div p{
         font-size: 25px;
