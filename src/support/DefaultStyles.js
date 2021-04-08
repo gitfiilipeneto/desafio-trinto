@@ -12,10 +12,11 @@ export const GlobalStyle = createGlobalStyle`
 export const StyledContainer = styled.div`
     width: 100vw;
     max-width:100%;
-    height: 100vh;
+    height: auto;
     max-height:100%;
     display: flex;  
     flex-direction: column;
+    align-items:center;
 
   @media(max-width: 800px) {
     height:auto;
@@ -26,7 +27,7 @@ export const StyledContainer = styled.div`
 
 //Card default Style
 export const StyledCard = styled.div`
-    width:max-content;
+    width:90vw;
     height:400px;
     margin: 10px;
     border: 1px solid black;

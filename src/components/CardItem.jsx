@@ -18,7 +18,7 @@ class CardItens extends Component {
                     <p>Price:{this.props.currency} {this.props.price}</p>
                     <p>Brand: {this.props.brand}</p>
                     <p>in Stock: {this.props.stock}</p>
-
+                    <button>Add To Cart</button>
                 </div>
 
 
