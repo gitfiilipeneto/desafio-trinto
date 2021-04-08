@@ -14,17 +14,29 @@ const App = () => {
   const onAdd = (produtos) => {
     const exist = cartItens.find(value => value.id === produtos.id)
     if (exist) {
-      setCartItens(cartItens.map(value => value.id === produtos.id ? { ...exist, quantidade: exist.quantidade + 1 } : value))
+      setCartItens(cartItens.map(value => 
+        value.id === produtos.id ? { ...exist, quantidade: exist.quantidade + 1 } : value))
     }else{
       setCartItens([...cartItens, {...produtos, quantidade : 1}])
     }
   }
 
+  const onRemove = (produtos) => {
+    const exist = cartItens.find((value) => value.id === produtos.id)
+    if(exist.quantidade === 1 ){
+      setCartItens(cartItens.filter((value) => value.id !== produtos.id ))
+    } else {
+      setCartItens(cartItens.map(value => 
+        value.id === produtos.id ? { ...exist, quantidade: exist.quantidade - 1 } : value))  
+    }
+  }
+
 return (
     <div>
-      <Header/>
+      <Header countCartItems={cartItens.length}/>
       <Main onAdd={onAdd} />
-      <ShoppingCartView cartItens={cartItens}/>
+      <ShoppingCartView cartItens={cartItens}
+       onAdd={onAdd} onRemove={onRemove}/>
     </div>
 
   );

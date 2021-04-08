@@ -1,15 +1,73 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import styled from 'styled-components'
+import {StyledCard, StyledContainer} from '../support/DefaultStyles'
 
 const ShoppingCartView = (props) => {
 
     const { cartItens, onAdd, onRemove } = props
+   
+    const localCartItens = () => {localStorage.item('cartItens')
+.then(JSON.parse(localCartItens))} 
+    
+    useEffect(() => {
+        localStorage.setItem('cartItens', JSON.stringify(cartItens))
+    
+    }, [cartItens], localCartItens)
+
+    const itemsCartPrice = cartItens.reduce((a, c) => a + c.price * c.quantidade, 0)
+
+    const StyledCheckout = styled(StyledCard)`
+    align-items:center;
+    justify-content: center;
+    flex-direction:column;
+    height: auto;
+    & h2{
+        margin: 10px;
+    }
+    & div div {
+        display:flex;
+        flex-direction:row;
+    }
+    & div div p{
+        width: 10vw;
+    }
+
+    @media(max-width: 800px) {
+    & div div p{
+        /* width: auto; */
+        font-size: 15px;
+    & div div button {
+        font-size: 15px;
+    }
+    }
+
+
+    }
+    & div div h6 {
+        font-size: 20px;
+        text-align:center;
+        margin: 2px;
+        padding: 4px;
+        border: 1px solid black;
+    }
+    & div div button {
+        font-size: 20px;
+        padding:3px;
+        margin: 1px;
+        background-color: white;
+    }
+
+    `
+
     return (
-        <aside>
+        <StyledContainer>
+
+<StyledCheckout>
             <h2>
-                Carrinho component
+                Cart
             </h2>
 
-            <div>itens:
+            <div>
                 <div>
                     {cartItens.length === 0 && <div>Empty cart</div>}
                 </div>
@@ -17,24 +75,40 @@ const ShoppingCartView = (props) => {
                 {cartItens.map(item => (
                     <div key={item.id}>
                         <div>
-                            <h1>
+                            <p>
                                 {item.name}
-                            </h1>
+                            </p>
 
                         </div>
 
                         <div>
-                            <button onClick={() => onAdd(item)}> + </button>
                             <button onClick={() => onRemove(item)}>-</button>
+                            <h6>{item.quantidade}</h6>
+                            <button onClick={() => onAdd(item)}> + </button>
                         </div>
 
                         <div>
-                            {item.quantidade} * {item.price.toFixed(2)}
+                            {item.quantidade} x {item.price.toFixed(2)}
                         </div>
                     </div>
                 ))}
             </div>
-        </aside>
+            <div>{cartItens.length !== 0 &&
+                <>
+                    
+                    <div>
+                        Total:
+                    </div>
+                    
+                    <div>
+                        ${itemsCartPrice}
+                    </div>
+                    {/* vai hardcoded msmo */}
+                </>
+            }</div>
+        </StyledCheckout>
+        </StyledContainer>
+       
     )
 }
 

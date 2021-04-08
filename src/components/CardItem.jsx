@@ -16,7 +16,7 @@ const CardItens = (props) => {
         //same request but only to currency
       }, [])
       
-
+      
     return (
         <StyledCard>
             <div>
@@ -25,19 +25,19 @@ const CardItens = (props) => {
 
             <div>
                 <p>
-                    {produto.name}
+                    Product Name: {produto.name}
                 </p>
                 <p>
 
-                    Price:{currencyes.currency}{produto.price}
+                    Price: {currencyes.currency} {produto.price}
                 </p>
                 <p>
 
-                    {produto.brand === null ? " - " : produto.brand}
+                    Product Brand: {produto.brand === null ? " - " : produto.brand}
                 </p>
                 <p>
 
-                    {produto.hasStock === true ? " Yes" : "No"}
+                    Stock available: {produto.hasStock === true ? " Yes" : "No"}
                 </p>
 
                 <button onClick={() => onAdd(produto)}>add to cart</button>

@@ -39,17 +39,22 @@ export const StyledCard = styled.div`
         height: auto;
     }
     & div p{
-        font-size: 25px;
+        font-size: 20px;
+        margin: unset;
     }
 
     & div img {
-        background-color:lightblue;
+        
         margin:10px;
-        border: 2px blue solid;
-        max-width: 150px;
+        
+        max-width: 100px;
         max-height: auto
     }
-
+    & button {
+        background-color: lightblue;
+        border: 1px solid black;
+        padding: 2px;
+    }
   @media(max-width: 800px) {
     flex-direction: column;
 
