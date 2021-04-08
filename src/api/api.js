@@ -10,7 +10,7 @@ class API {
         }
 
         return jsonResponse
-        .then( jsonResponse => jsonResponse.products)
+        .then( jsonResponse => jsonResponse)
     }
 }
 
