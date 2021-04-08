@@ -11,19 +11,19 @@ const App = () => {
 
   const [cartItens, setCartItens] = useState([])
 
-  const onAdd = (product) => {
-    const exist = cartItens.find(x => x.id === product.id)
+  const onAdd = (produtos) => {
+    const exist = cartItens.find(value => value.name === produtos.id)
     if (exist) {
-      setCartItens(cartItens.map(x => x.id === product.id ? { ...exist, qtd: exist.qtd + 1 } : x))
+      setCartItens(cartItens.map(value => value.name === produtos.id ? { ...exist, quantidade: exist.quantidade + 1 } : value))
     }else{
-      setCartItens([...cartItens, {...product, qtd : 1}])
+      setCartItens([...cartItens, {...produtos, quantidade : 1}])
     }
   }
 
 return (
     <div>
       <Header/>
-      <Main />
+      <Main onAdd={onAdd} />
       <ShoppingCartView cartItens={cartItens}/>
     </div>
 

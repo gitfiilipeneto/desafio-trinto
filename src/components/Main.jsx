@@ -3,47 +3,40 @@ import API from '../api/api';
 import CardItens from '../components/CardItem'
 import { StyledContainer } from '../support/DefaultStyles'
 
-const Main = () => {
+const Main = (props) => {
+  const { onAdd } = props
 
-    const [products, setProducts] = useState([])
-    const [currencyes, setCurrency] = useState([])
+  const [products, setProducts] = useState([])
+  
 
-    useEffect(() => {
-        API.getProducts()
-          .then(responseProducts => setProducts(responseProducts.products))
-        //fills array w/ products 
-      }, [])
-    
-      useEffect(() => {
-        API.getProducts()
-          .then(responseProducts => setCurrency(responseProducts))
-        //same request but only to currency
-      }, [])
-    
-    
-      let moneyUnity = (currencyes.currency)
-      //default if ternary {produto.brand === null ? <p> Nulo " - " </p> : <p> </p>}
-    return (
-        <StyledContainer>
-        <div>
-          <h1>
-            filters
-          </h1>
-        </div>
-        {products.map(produto => {
-          return (
-            <CardItens
-              name={produto.name}
-              currency={moneyUnity} price={produto.price}
-              brand={produto.brand === null ? " - " : produto.brand}
-              stock={produto.hasStock === true ? " Yes" : "No"} />
-          )
-        })}
-  
-  
-      </StyledContainer>
-    )
+  useEffect(() => {
+    API.getProducts()
+      .then(responseProducts => setProducts(responseProducts.products))
+    //fills array w/ products 
+  }, [])
+
+  let arrayProdutos = (products)
+
+  //default if ternary {product.brand === null ? <p> Nulo " - " </p> : <p> </p>}
+  return (
+    <StyledContainer>
+      <div>
+        {arrayProdutos.map(produtos => (
+          <CardItens key={produtos.id} produtos={produtos} onAdd={onAdd} />
+        ))}
+      </div>
+
+    </StyledContainer>
+  )
 }
 
 
 export default Main
+
+
+// key={product.id}>
+              //   {product.name}
+              // {moneyUnity} price={product.price}
+              // {product.brand === null ? " - " : product.brand}
+              // {product.hasStock === true ? " Yes" : "No"} 
+              // <button onClick={console.log('worth')}>test</button>
