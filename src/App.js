@@ -12,9 +12,9 @@ const App = () => {
   const [cartItens, setCartItens] = useState([])
 
   const onAdd = (produtos) => {
-    const exist = cartItens.find(value => value.name === produtos.id)
+    const exist = cartItens.find(value => value.id === produtos.id)
     if (exist) {
-      setCartItens(cartItens.map(value => value.name === produtos.id ? { ...exist, quantidade: exist.quantidade + 1 } : value))
+      setCartItens(cartItens.map(value => value.id === produtos.id ? { ...exist, quantidade: exist.quantidade + 1 } : value))
     }else{
       setCartItens([...cartItens, {...produtos, quantidade : 1}])
     }

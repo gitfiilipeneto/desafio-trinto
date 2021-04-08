@@ -22,7 +22,7 @@ const Main = (props) => {
     <StyledContainer>
       <div>
         {arrayProdutos.map(produtos => (
-          <CardItens key={produtos.id} produtos={produtos} onAdd={onAdd} />
+          <CardItens key={produtos.id} produto={produtos} onAdd={onAdd} />
         ))}
       </div>
 

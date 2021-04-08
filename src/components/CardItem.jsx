@@ -6,7 +6,7 @@ import API from '../api/api';
 
 const CardItens = (props) => {
 
-    const { produtos, onAdd } = props
+    const { produto, onAdd } = props
 
     const [currencyes, setCurrency] = useState([])
 
@@ -25,23 +25,22 @@ const CardItens = (props) => {
 
             <div>
                 <p>
-
-                    {produtos.name}
+                    {produto.name}
                 </p>
                 <p>
 
-                    Price:{currencyes.currency}{produtos.price}
+                    Price:{currencyes.currency}{produto.price}
                 </p>
                 <p>
 
-                    {produtos.brand === null ? " - " : produtos.brand}
+                    {produto.brand === null ? " - " : produto.brand}
                 </p>
                 <p>
 
-                    {produtos.hasStock === true ? " Yes" : "No"}
+                    {produto.hasStock === true ? " Yes" : "No"}
                 </p>
 
-                <button onClick={() => onAdd(produtos)}>add to cart</button>
+                <button onClick={() => onAdd(produto)}>add to cart</button>
             </div>
            
            

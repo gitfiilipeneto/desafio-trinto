@@ -14,7 +14,7 @@ const ShoppingCartView = (props) => {
                     {cartItens.length === 0 && <div>Empty cart</div>}
                 </div>
 
-                {cartItens.map(item => {
+                {cartItens.map(item => (
                     <div key={item.id}>
                         <div>
                             <h1>
@@ -29,10 +29,10 @@ const ShoppingCartView = (props) => {
                         </div>
 
                         <div>
-                            {item} * {item.price.toFixed(2)}
+                            {item.quantidade} * {item.price.toFixed(2)}
                         </div>
                     </div>
-                })}
+                ))}
             </div>
         </aside>
     )
