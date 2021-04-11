@@ -51,9 +51,18 @@ export const StyledCard = styled.div`
         max-height: auto
     }
     & button {
-        background-color: lightblue;
-        border: 1px solid black;
-        padding: 2px;
+        color: white;
+        background-color: #248232;
+        font-size: 13px;
+        padding: 3px;
+    }
+    & button:active, button:focus {
+    outline: 0;
+    border: none;
+}
+//intance all .button styles to global style later
+    & button:hover{
+      color: black;
     }
   @media(max-width: 800px) {
     flex-direction: column;

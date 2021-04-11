@@ -51,6 +51,7 @@ const ShoppingCartView = (props) => {
         border: 1px solid black;
     }
     & div div button {
+        color: black;
         font-size: 20px;
         padding:3px;
         margin: 1px;
