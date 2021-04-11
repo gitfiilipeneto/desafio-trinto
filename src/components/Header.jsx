@@ -43,6 +43,7 @@ const Header = (props) => {
         <Icon className={classes.iconStyle}/>
         <Typography variant="h6" className={classes.title}  >
           My Shopping
+          {/* <a class="nav-link" href="#">Amount cart itens {' '} {countCartItems ? (<>{countCartItems}</>) : '0'}</a> */}
     </Typography>
       </Toolbar>
     </AppBar>
