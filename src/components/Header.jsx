@@ -3,8 +3,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import {GREENPANTONE,BABYPOWEDER} from '../support/Colors'
-import {ReactComponent as Icon} from '../images/shopping-cart.svg'
+import { GREENPANTONE, BABYPOWEDER, POPUPRED } from '../support/Colors'
+import { ReactComponent as Icon } from '../images/shopping-cart.svg'
+
 
 
 
@@ -16,20 +17,27 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    color:BABYPOWEDER,
+    color: BABYPOWEDER,
 
     flexGrow: 1,
   },
-  colorScheme:{
+  colorScheme: {
 
-    background:GREENPANTONE,
+    background: GREENPANTONE,
   },
-  iconStyle:{
-    width:35,
-    height:35,
+  iconStyle: {
+    width: 35,
+    height: 35,
+    fill: BABYPOWEDER,
+  },
+  cartCount: {
+    verticalAlign:10,
     marginRight:10,
-    fill:BABYPOWEDER
-  } 
+    borderRadius: 50,
+    paddingRight:5,
+    backgroundColor: POPUPRED,
+  }
+
 }));
 
 
@@ -38,15 +46,17 @@ const Header = (props) => {
   const { countCartItems } = props
   return (
     <div className={classes.root}>
-    <AppBar position="static" className={classes.colorScheme} >
-      <Toolbar>
-        <Icon className={classes.iconStyle}/>
-        <Typography variant="h6" className={classes.title}  >
-          My Shopping
-          {/* <a class="nav-link" href="#">Amount cart itens {' '} {countCartItems ? (<>{countCartItems}</>) : '0'}</a> */}
+      <AppBar position="static" className={classes.colorScheme} >
+        <Toolbar>
+          <div>
+            <Icon className={classes.iconStyle} />
+            <a className={classes.cartCount}>{' '} {countCartItems ? (<>{countCartItems}</>) : '0'}</a>
+          </div>
+          <Typography variant="h6" className={classes.title}  >
+            My Shopping
     </Typography>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
     </div>
 
   )

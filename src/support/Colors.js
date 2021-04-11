@@ -8,5 +8,7 @@ export const SPACECRAYOLA = '#2d3a3aff'
 
 export const BABYPOWEDER = '#fcfffcff'
 
+export const POPUPRED = '#FF0000'
+
 
 // do the colors scheme on figma later
