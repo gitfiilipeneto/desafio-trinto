@@ -10,6 +10,10 @@ const useStyle = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         marginTop: 20,
+        padding: 0,
+    },
+    test:{
+        
     },
     paper: {
         height: 140,
@@ -24,11 +28,6 @@ const useStyle = makeStyles((theme) => ({
 const NewMainRender = (props) => {
     const [spacing, setSpacing] = useState(2)
 
-    const handleChange = (event) => {
-        setSpacing(Number(event.target.value));
-    }
-
-
     const { onAdd } = props
     const [products, setproducts] = useState([])
     const classes = useStyle()
@@ -41,7 +40,7 @@ const NewMainRender = (props) => {
 
     return (
         <Grid container className={classes.root} spacing={2}>
-            <Grid item xs={12}>
+            <Grid className={classes.test} item xs={12}>
                 <Grid container justify="center" spacing={spacing}>
                     {productsArray.map(produtos => (
 

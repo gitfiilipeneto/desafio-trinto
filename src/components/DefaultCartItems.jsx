@@ -6,14 +6,7 @@ const ShoppingCartView = (props) => {
 
     const { cartItens, onAdd, onRemove } = props
    
-    const localCartItens = () => {localStorage.item('cartItens')
-.then(JSON.parse(localCartItens))} 
-    
-    useEffect(() => {
-        localStorage.setItem('cartItens', JSON.stringify(cartItens))
-    
-    }, [cartItens], localCartItens)
-
+   
     const itemsCartPrice = cartItens.reduce((a, c) => a + c.price * c.quantidade, 0)
 
     const StyledCheckout = styled(StyledCard)`
