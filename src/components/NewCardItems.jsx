@@ -3,11 +3,13 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import API from '../api/api'
 import { Card, CardMedia, CardContent, Typography, makeStyles,Button } from '@material-ui/core'
+import {GREENPANTONE,BABYPOWEDER, RICHBLACKFOGRA} from '../support/Colors'
 import DefaultImg from '../images/sneakers.png'
 
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 300,
+        margin: 10,
     },
     media: {
         height: 3,
@@ -16,6 +18,18 @@ const useStyles = makeStyles((theme) => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
+    button:{
+        color:BABYPOWEDER,
+        backgroundColor: GREENPANTONE,
+        fontSize: 12,
+        padding: 3,
+        '&:hover':{
+            color: RICHBLACKFOGRA,
+        },
+        '&:focus':{
+            outline: 0,
+        }
+    }
 
 }));
 
@@ -59,7 +73,9 @@ const NewCardItems = (props) => {
                     Stock available: {produtos.hasStock === true ? " Yes" : "No"}
                 </Typography>
 
-                <Button onClick={() => onAdd(produtos)}>add to cart</Button>
+                <Button 
+                className={classes.button}
+                onClick={() => onAdd(produtos)}>add to cart</Button>
             </CardContent>
         </Card>
 

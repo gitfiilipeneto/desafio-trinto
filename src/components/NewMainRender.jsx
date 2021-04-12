@@ -2,30 +2,60 @@
 // the into screen(inside a container)
 
 import React, { useEffect, useState } from 'react'
-import {Container} from '@material-ui/core'
+import { Container, Box, makeStyles, Grid } from '@material-ui/core'
 import API from '../api/api'
 import NewCardItems from './NewCardItems'
 
+const useStyle = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        margin: 20,
+      },
+      paper: {
+        height: 140,
+        width: 100,
+      },
+      control: {
+        padding: theme.spacing(2),
+      },
+}))
+
+
 const NewMainRender = (props) => {
-const { onAdd } = props
-const [products, setproducts] = useState([])
+    const [spacing, setSpacing] = useState(2)
 
-useEffect(() => {
-    API.getProducts()
-        .then(responseProducts => setproducts(responseProducts.products))
-}, [])
+    const handleChange = (event) => {
+        setSpacing(Number(event.target.value));
+    }
 
-let productsArray = (products)
+
+    const { onAdd } = props
+    const [products, setproducts] = useState([])
+    const classes = useStyle()
+    useEffect(() => {
+        API.getProducts()
+            .then(responseProducts => setproducts(responseProducts.products))
+    }, [])
+
+    let productsArray = (products)
 
     return (
-        <Container maxWidth="lg">
-            {/* pass the container style here */}
-            {productsArray.map(produtos => (
+        <Grid container className={classes.root} spacing={2}>
+            <Grid item xs={12}>
+                <Grid container justify="center" spacing={spacing}>
+                {productsArray.map(produtos => (
 
-                <NewCardItems key={produtos.id} produtos={produtos} onAdd={onAdd}/>
-                
-            ))}
-        </Container>
+<NewCardItems key={produtos.id} produtos={produtos} onAdd={onAdd} />
+
+))}
+                </Grid>
+            </Grid>
+        </Grid>
+            
+
+
+        
+            
     )
 }
 export default NewMainRender
