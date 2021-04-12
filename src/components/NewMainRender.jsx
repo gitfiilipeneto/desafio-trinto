@@ -9,15 +9,15 @@ import NewCardItems from './NewCardItems'
 const useStyle = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        margin: 20,
-      },
-      paper: {
+        marginTop: 20,
+    },
+    paper: {
         height: 140,
         width: 100,
-      },
-      control: {
+    },
+    control: {
         padding: theme.spacing(2),
-      },
+    },
 }))
 
 
@@ -43,19 +43,19 @@ const NewMainRender = (props) => {
         <Grid container className={classes.root} spacing={2}>
             <Grid item xs={12}>
                 <Grid container justify="center" spacing={spacing}>
-                {productsArray.map(produtos => (
+                    {productsArray.map(produtos => (
 
-<NewCardItems key={produtos.id} produtos={produtos} onAdd={onAdd} />
+                        <NewCardItems key={produtos.id} produtos={produtos} onAdd={onAdd} />
 
-))}
+                    ))}
                 </Grid>
             </Grid>
         </Grid>
-            
 
 
-        
-            
+
+
+
     )
 }
 export default NewMainRender
