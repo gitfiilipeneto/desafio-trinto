@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import ShoppingCartView from './components/DefaultCartItems';
 import Header from './components/Header';
 import Main from './components/Main';
+import NewMainRender from './components/NewMainRender';
 
 
 const App = () => {
@@ -34,7 +35,8 @@ const App = () => {
 return (
     <div>
       <Header countCartItems={cartItens.length}/>
-      <Main onAdd={onAdd} />
+      {/* <Main onAdd={onAdd} /> */}
+      <NewMainRender onAdd={onAdd}/>
       <ShoppingCartView cartItens={cartItens}
        onAdd={onAdd} onRemove={onRemove}/>
     </div>

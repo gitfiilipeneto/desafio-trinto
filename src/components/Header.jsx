@@ -1,8 +1,5 @@
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import {AppBar, Toolbar, Typography, makeStyles} from '@material-ui/core'
 import { GREENPANTONE, BABYPOWEDER, POPUPRED } from '../support/Colors'
 import { ReactComponent as Icon } from '../images/shopping-cart.svg'
 
