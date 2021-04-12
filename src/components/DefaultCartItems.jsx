@@ -1,20 +1,26 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import {StyledCard, StyledContainer} from '../support/DefaultStyles'
+import { StyledCard, StyledContainer } from '../support/DefaultStyles'
+
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const ShoppingCartView = (props) => {
 
     const { cartItens, onAdd, onRemove } = props
-   
-   
+
+
     const itemsCartPrice = cartItens.reduce((a, c) => a + c.price * c.quantidade, 0)
 
     const StyledCheckout = styled(StyledCard)`
+    width: 40vw;
     align-items:center;
     justify-content: center;
     flex-direction:column;
     height: auto;
-    & h2{
+    margin: auto;
+    padding: 5px;
+       & h2{
         margin: 10px;
     }
     & div div {
@@ -55,54 +61,57 @@ const ShoppingCartView = (props) => {
 
     return (
         <StyledContainer>
-
-<StyledCheckout>
-            <h2>
-                Cart
+        <Popup trigger={<button> MyCart </button>}>
+            <StyledCheckout>
+                <h2>
+                    Cart
             </h2>
 
-            <div>
                 <div>
-                    {cartItens.length === 0 && <div>Empty cart</div>}
+                    <div>
+                        {cartItens.length === 0 && <div>Empty cart</div>}
+                    </div>
+
+                    {cartItens.map(item => (
+                        <div key={item.id}>
+                            <div>
+                                <p>
+                                    {item.name}
+                                </p>
+
+                            </div>
+
+                            <div>
+                                <button onClick={() => onRemove(item)}>-</button>
+                                <h6>{item.quantidade}</h6>
+                                <button onClick={() => onAdd(item)}> + </button>
+                            </div>
+
+                            <div>
+                                {item.quantidade} x {item.price.toFixed(2)}
+                            </div>
+                        </div>
+                    ))}
                 </div>
-
-                {cartItens.map(item => (
-                    <div key={item.id}>
-                        <div>
-                            <p>
-                                {item.name}
-                            </p>
-
-                        </div>
+                <div>{cartItens.length !== 0 &&
+                    <>
 
                         <div>
-                            <button onClick={() => onRemove(item)}>-</button>
-                            <h6>{item.quantidade}</h6>
-                            <button onClick={() => onAdd(item)}> + </button>
-                        </div>
+                            Total:
+                    </div>
 
                         <div>
-                            {item.quantidade} x {item.price.toFixed(2)}
+                            ${itemsCartPrice}
                         </div>
-                    </div>
-                ))}
-            </div>
-            <div>{cartItens.length !== 0 &&
-                <>
-                    
-                    <div>
-                        Total:
-                    </div>
-                    
-                    <div>
-                        ${itemsCartPrice}
-                    </div>
-                    {/* vai hardcoded msmo */}
-                </>
-            }</div>
-        </StyledCheckout>
+                        
+                    </>
+                }</div>
+            </StyledCheckout>
+        </Popup>
+
         </StyledContainer>
-       
+
+
     )
 }
 
