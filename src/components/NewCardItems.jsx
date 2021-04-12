@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
     },
     media: {
-        height: 3,
+        height: 5,
         paddingTop: '56.25%', // 16:9
     },
     expandOpen: {
@@ -53,7 +53,7 @@ const NewCardItems = (props) => {
 
             <CardMedia
                 className={classes.media}
-                src={DefaultImg}
+                image={DefaultImg}
                 title="default image"
             />
             <CardContent>
