@@ -1,26 +1,62 @@
 import React from 'react'
-import "bootstrap/js/src/collapse.js";
+import {AppBar, Toolbar, Typography, makeStyles} from '@material-ui/core'
+import { GREENPANTONE, BABYPOWEDER, POPUPRED } from '../support/Colors'
+import { ReactComponent as Icon } from '../images/shopping-cart.svg'
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    color: BABYPOWEDER,
+
+    flexGrow: 1,
+  },
+  colorScheme: {
+
+    background: GREENPANTONE,
+  },
+  iconStyle: {
+    width: 35,
+    height: 35,
+    fill: BABYPOWEDER,
+  },
+  cartCount: {
+    verticalAlign:10,
+    marginRight:10,
+    borderRadius: 50,
+    paddingRight:5,
+    backgroundColor: POPUPRED,
+  }
+
+}));
+
 
 const Header = (props) => {
-  const {countCartItems} = props
-    return(
-        <nav class="navbar fixed-top  navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                  
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-  
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Amount cart itens {' '} {countCartItems ? (<>{countCartItems}</>) : '0'}</a>
-                    </li>
+  const classes = useStyles()
+  const { countCartItems } = props
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" className={classes.colorScheme} >
+        <Toolbar>
+          <div>
+            <Icon className={classes.iconStyle} />
+            <a className={classes.cartCount}>{' '} {countCartItems ? (<>{countCartItems}</>) : '0'}</a>
+          </div>
+          <Typography variant="h6" className={classes.title}  >
+            My Shopping
+    </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
 
-                  </ul>
-                </div>
-            </div>
-        </nav>
-    )
+  )
 }
 export default Header
+  // <a class="nav-link" href="#">Amount cart itens {' '} {countCartItems ? (<>{countCartItems}</>) : '0'}</a>

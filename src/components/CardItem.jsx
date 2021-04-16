@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react'
 import itemsPhoto from '../images/sneakers.png'
 import { StyledCard } from '../support/DefaultStyles'
 import API from '../api/api';
+import {Button} from '@material-ui/core'
 // this component render a card with props, for each item in json return a card
 
 const CardItens = (props) => {
@@ -40,7 +41,7 @@ const CardItens = (props) => {
                     Stock available: {produto.hasStock === true ? " Yes" : "No"}
                 </p>
 
-                <button onClick={() => onAdd(produto)}>add to cart</button>
+                <Button onClick={() => onAdd(produto)}>add to cart</Button>
             </div>
            
            
