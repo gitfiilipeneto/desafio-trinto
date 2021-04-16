@@ -1,18 +1,23 @@
-import React, { useEffect } from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
+import {Container, Button} from '@material-ui/core'
 import { StyledCard, StyledContainer } from '../support/DefaultStyles'
-
 import Popup from 'reactjs-popup';
+
 import 'reactjs-popup/dist/index.css';
 
 const ShoppingCartView = (props) => {
 
     const { cartItens, onAdd, onRemove } = props
 
-
     const itemsCartPrice = cartItens.reduce((a, c) => a + c.price * c.quantidade, 0)
 
+    const StyledPopUp = styled(Popup)`
+        color:red;
+    `
+
     const StyledCheckout = styled(StyledCard)`
+    border: none;
     width: 40vw;
     align-items:center;
     justify-content: center;
@@ -20,7 +25,7 @@ const ShoppingCartView = (props) => {
     height: auto;
     margin: auto;
     padding: 5px;
-       & h2{
+    & h2{
         margin: 10px;
     }
     & div div {
@@ -33,7 +38,7 @@ const ShoppingCartView = (props) => {
 
     @media(max-width: 800px) {
     & div div p{
-        /* width: auto; */
+       
         font-size: 15px;
     & div div button {
         font-size: 15px;
@@ -60,12 +65,16 @@ const ShoppingCartView = (props) => {
     `
 
     return (
-        <StyledContainer>
-        <Popup trigger={<button> MyCart </button>}>
+
+        
+        <Container>
+            
+            <Popup modal closeOnDocumentClick  trigger={<button> MyCart </button>}>
+            
             <StyledCheckout>
                 <h2>
-                    Cart
-            </h2>
+                    My Cart
+                </h2>
 
                 <div>
                     <div>
@@ -107,9 +116,9 @@ const ShoppingCartView = (props) => {
                     </>
                 }</div>
             </StyledCheckout>
-        </Popup>
+        </Popup>        
 
-        </StyledContainer>
+        </Container>
 
 
     )

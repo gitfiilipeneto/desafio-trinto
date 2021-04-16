@@ -2,9 +2,11 @@
 // the into screen(inside a container)
 
 import React, { useEffect, useState } from 'react'
-import { Container, Box, makeStyles, Grid } from '@material-ui/core'
+import { makeStyles, Grid } from '@material-ui/core'
 import API from '../api/api'
 import NewCardItems from './NewCardItems'
+import Filters from './Filters'
+
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -25,10 +27,9 @@ const useStyle = makeStyles((theme) => ({
 }))
 
 
-const NewMainRender = (props) => {
+const NewMainRender = (onAdd) => {
+    
     const [spacing, setSpacing] = useState(2)
-
-    const { onAdd } = props
     const [products, setproducts] = useState([])
     const classes = useStyle()
     useEffect(() => {
@@ -40,6 +41,7 @@ const NewMainRender = (props) => {
 
     return (
         <Grid container className={classes.root} spacing={2}>
+            <Filters productsList={productsArray}/>
             <Grid className={classes.test} item xs={12}>
                 <Grid container justify="center" spacing={spacing}>
                     {productsArray.map(produtos => (

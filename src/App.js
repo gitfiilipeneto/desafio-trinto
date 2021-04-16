@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 
 import ShoppingCartView from './components/DefaultCartItems';
 import Header from './components/Header';
-import Main from './components/Main';
 import NewMainRender from './components/NewMainRender';
 
 
@@ -14,6 +13,7 @@ const App = () => {
 
   const onAdd = (produtos) => {
     const exist = cartItens.find(value => value.id === produtos.id)
+    
     let newCartItems = []
     if (exist) {
       newCartItems = (cartItens.map(value => 
@@ -45,10 +45,14 @@ const App = () => {
 return (
     <div>
       <Header countCartItems={cartItens.length}/>
-      {/* <Main onAdd={onAdd} /> */}
+
       <NewMainRender onAdd={onAdd}/>
-      <ShoppingCartView cartItens={cartItens}
-       onAdd={onAdd} onRemove={onRemove}/>
+      
+      <ShoppingCartView
+       cartItens={cartItens}
+       onAdd={onAdd}
+       onRemove={onRemove}
+       />
     </div>
 
   );
