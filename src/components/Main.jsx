@@ -34,9 +34,3 @@ const Main = (props) => {
 export default Main
 
 
-// key={product.id}>
-              //   {product.name}
-              // {moneyUnity} price={product.price}
-              // {product.brand === null ? " - " : product.brand}
-              // {product.hasStock === true ? " Yes" : "No"} 
-              // <button onClick={console.log('worth')}>test</button>
